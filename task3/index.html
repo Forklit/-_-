@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .button {
+      width: 100px;
+      height: 30px;
+      margin-bottom: 10px;
+      text-align: center;
+      background-color: #eee;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="button">1</div>
+    <div class="button">2</div>
+    <div class="button">3</div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('.button').click(function() {
+        var clickedButton = $(this);
+        var buttonIndex = $('.button').index(clickedButton);
+
+        // Поменять местами кнопку с предыдущей
+        if (buttonIndex > 0) {
+          var prevButton = $('.button').eq(buttonIndex - 1);
+          clickedButton.insertBefore(prevButton);
+        }
+
+        // Поменять местами кнопку с следующей
+        if (buttonIndex < $('.button').length - 1) {
+          var nextButton = $('.button').eq(buttonIndex + 1);
+          clickedButton.insertAfter(nextButton);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
